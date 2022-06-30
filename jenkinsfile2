@@ -9,8 +9,7 @@ node {
      def contenedortest = docker.image('node:4.6')
      contenedortest.pull()
      contenedortest.inside {
-       sh 'npm install --only=dev'
-       sh 'npm test'
+       sh 'echo hola'
      }
    }                   
    stage('Docker Build & Push') {
