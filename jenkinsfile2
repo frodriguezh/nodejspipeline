@@ -1,6 +1,6 @@
 pipeline {
-    def gitcommit
     agent {
+        def gitcommit
         docker { image 'node:16.13.1-alpine' }
     }
     stages {
