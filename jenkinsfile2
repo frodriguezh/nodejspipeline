@@ -6,7 +6,7 @@ node {
      gitcommit = readFile('.git/commit-id').trim()
    }
    stage('test') {
-     def contenedortest = docker.image('node')
+     def contenedortest = docker.image('alpine:3.15')
      contenedortest.pull()
      contenedortest.inside {
        sh 'HOME=${WORKSPACE}'
