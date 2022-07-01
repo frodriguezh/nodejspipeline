@@ -1,7 +1,9 @@
 pipeline {
     agent {
-        def gitcommit
         docker { image 'node:16.13.1-alpine' }
+    }
+    environment { 
+        gitcommit = ''
     }
     stages {
          stage('Verificacion SCM') {
