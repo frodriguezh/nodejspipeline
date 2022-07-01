@@ -6,13 +6,13 @@ node {
      gitcommit = readFile('.git/commit-id').trim()
    }
    stage('test') {
-     def contenedortest = docker.image('node')
+     def contenedortest = docker.image('node:4.6')
      contenedortest.pull()
      contenedortest.inside {
        sh 'npm install --only=dev'
        sh 'npm test'
      }
-   }                   
+   }                    
    stage('Docker Build & Push') {
      docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
       def nuestraapp = docker.build("funknando/nodejsapp:${gitcommit}", ".")
