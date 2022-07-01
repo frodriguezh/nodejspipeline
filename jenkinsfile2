@@ -9,7 +9,7 @@ node {
      def contenedortest = docker.image('node:4.6')
      contenedortest.pull()
      contenedortest.inside {
-       sh "HOME=${WORKSPACE} && cd ${WORKSPACE}/src/common && npm install --only=dev"
+       sh "HOME=${WORKSPACE} && cd ${WORKSPACE}/src/common && npm install"
       
      }
    }                   
