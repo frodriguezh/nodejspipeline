@@ -10,6 +10,8 @@ node {
      contenedortest.pull()
      contenedortest.inside {
        echo 'test'
+       sh 'npm install'
+       sh 'npm test'
      }
    }                   
 }
