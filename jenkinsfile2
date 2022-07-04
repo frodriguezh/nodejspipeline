@@ -7,7 +7,7 @@ node {
    }
    stage('test') {
       
-     def contenedortest = docker.image('node:16.13.1-alpine').withRun(args '-p 3000:3000 -p 5000:5000 -u root')
+     def contenedortest = docker.image('node:16.13.1-alpine').withRun('-p 3000:3000 -p 5000:5000 -u root')
      contenedortest.pull()
      contenedortest.inside {
        sh 'npm install'
