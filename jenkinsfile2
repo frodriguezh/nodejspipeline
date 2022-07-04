@@ -6,8 +6,9 @@ node {
      gitcommit = readFile('.git/commit-id').trim()
    }
    stage('test') {
-      docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
-         sh 'npm install'
+      docker.image('node:16.13.1-alpine').inside('-v $HOME/.m2:/root/.m2') {
+          sh 'npm install'
+         sh 'npm test'
       }
    }                   
    stage('Docker Build & Push') {
