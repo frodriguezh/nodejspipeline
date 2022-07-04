@@ -6,12 +6,9 @@ node {
      gitcommit = readFile('.git/commit-id').trim()
    }
    stage('test') {
-   
-     docker.image('mysql:5').withRun('-e "MYSQL_ROOT_PASSWORD=my-secret-pw"' +
-                                    ' -p 3306:3306') { c ->
-        echo 'hola
-    }
-      
+      docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
+         sh 'npm install'
+      }
    }                   
    stage('Docker Build & Push') {
      docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
