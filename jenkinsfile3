@@ -1,4 +1,4 @@
-
+def projectName="canaldenuncias"
 pipeline {
     agent {
         docker {
@@ -8,7 +8,6 @@ pipeline {
     }
     stages {
         stage('Build') {
-            gitcommit = ""
             steps {
                 
                 checkout scm
