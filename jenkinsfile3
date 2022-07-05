@@ -30,7 +30,7 @@ pipeline {
                steps {
                   script {
                         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                              nuestraapp = docker.build("frodriguezh/nodejsapp:${gitcommit}", ".")
+                              nuestraapp = docker.build("funknando/nodejsapp:${gitcommit}", ".")
                               nuestraapp.push()
                         }
                   } 
