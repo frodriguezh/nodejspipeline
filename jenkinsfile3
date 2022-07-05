@@ -1,3 +1,4 @@
+def gitcommit
 pipeline {
       agent {
            docker {
@@ -11,7 +12,7 @@ pipeline {
                    checkout scm
                    sh "git rev-parse --short HEAD > .git/commit-id"
                    script {
-                        def gitcommit = readFile('.git/commit-id').trim()
+                        gitcommit = readFile('.git/commit-id').trim()
                    }
                }
            }
