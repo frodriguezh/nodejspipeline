@@ -1,0 +1,1212 @@
+Started by user admin
+Obtained jenkinsfile2 from git https://github.com/frodriguezh/nodejspipeline.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Dockerpipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Verificacion SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Dockerpipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/frodriguezh/nodejspipeline.git # timeout=10
+Fetching upstream changes from https://github.com/frodriguezh/nodejspipeline.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/frodriguezh/nodejspipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision a9c8d3df6dde5eaa38e3ca58c75c76efea8539e5 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a9c8d3df6dde5eaa38e3ca58c75c76efea8539e5 # timeout=10
+Commit message: "0407221842"
+ > git rev-list --no-walk ce5b4b4710194f273d22714b153bf8a53e82fad3 # timeout=10
+[Pipeline] sh
++ git rev-parse --short HEAD
+[Pipeline] readFile
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (test)
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker pull node:16.13.1-alpine
+16.13.1-alpine: Pulling from library/node
+Digest: sha256:0e071f3c5c84cffa6b1035023e1956cf28d48f4b36e229cef328772da81ec0c5
+Status: Image is up to date for node:16.13.1-alpine
+docker.io/library/node:16.13.1-alpine
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:16.13.1-alpine
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 128:138 -w /var/lib/jenkins/workspace/Dockerpipeline -v /var/lib/jenkins/workspace/Dockerpipeline:/var/lib/jenkins/workspace/Dockerpipeline:rw,z -v /var/lib/jenkins/workspace/Dockerpipeline@tmp:/var/lib/jenkins/workspace/Dockerpipeline@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:16.13.1-alpine cat
+$ docker top b4788d9c88702ceb94de33b45681bb32b4897ea59c4c79ebd8e0074797704a9c -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+test
+[Pipeline] sh
++ npm install
+npm WARN old lockfile 
+npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/array-flatten: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for array-flatten@1.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/array-flatten: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/balanced-match: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for balanced-match@1.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/balanced-match: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for debug@2.6.9 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/bignumber.js: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for bignumber.js@4.1.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/bignumber.js: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for ms@2.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/brace-expansion: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for brace-expansion@1.1.11 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/brace-expansion: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/browser-stdout: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for browser-stdout@1.3.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/browser-stdout: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/bytes: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for bytes@3.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/bytes: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/commander: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for commander@2.15.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/commander: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/concat-map: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for concat-map@0.0.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/concat-map: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/content-disposition: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for content-disposition@0.5.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/content-disposition: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/content-type: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for content-type@1.0.4 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/content-type: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/accepts: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for accepts@1.3.7 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/accepts: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/cookie: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for cookie@0.3.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/cookie: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/cookie-signature: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for cookie-signature@1.0.6 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/cookie-signature: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/core-util-is: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for core-util-is@1.0.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/core-util-is: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/depd: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for depd@1.1.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/depd: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/destroy: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for destroy@1.0.4 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/destroy: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/diff: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for diff@3.5.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/diff: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ee-first: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for ee-first@1.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ee-first: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/body-parser: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for body-parser@1.18.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/body-parser: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for http-errors@1.6.3 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/escape-html: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for escape-html@1.0.3 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/escape-html: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/encodeurl: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for encodeurl@1.0.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/encodeurl: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/escape-string-regexp: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for escape-string-regexp@1.0.5 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/escape-string-regexp: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/etag: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for etag@1.8.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/etag: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for ms@2.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/express: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for express@4.16.3 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/express: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for ms@2.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/forwarded: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for forwarded@0.1.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/forwarded: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/finalhandler: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for finalhandler@1.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/finalhandler: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile  Could not fetch metadata for debug@2.6.9 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15 {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile  Could not fetch metadata for debug@2.6.9 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15 {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/fresh: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for fresh@0.5.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/fresh: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/glob: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for glob@7.1.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/glob: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/has-flag: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for has-flag@3.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/has-flag: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/fs.realpath: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for fs.realpath@1.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/fs.realpath: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/growl: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for growl@1.10.5 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/growl: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/he: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for he@1.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/he: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for http-errors@1.7.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/iconv-lite: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for iconv-lite@0.4.19 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/iconv-lite: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/statuses: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for statuses@1.5.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/statuses: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/inherits: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for inherits@2.0.3 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/inherits: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/inflight: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for inflight@1.0.6 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/inflight: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/isarray: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for isarray@1.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/isarray: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ipaddr.js: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for ipaddr.js@1.8.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ipaddr.js: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/media-typer: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for media-typer@0.3.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/media-typer: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/merge-descriptors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for merge-descriptors@1.0.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/merge-descriptors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/methods: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for methods@1.1.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/methods: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mime: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for mime@1.4.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mime: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mime-types: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for mime-types@2.1.19 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mime-types: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mime-db: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for mime-db@1.35.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mime-db: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/minimatch: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for minimatch@3.0.4 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/minimatch: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/minimist: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for minimist@0.0.8 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/minimist: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mkdirp: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for mkdirp@0.5.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mkdirp: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for debug@3.1.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile  Could not fetch metadata for ms@2.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15 {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile  Could not fetch metadata for ms@2.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15 {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/safe-buffer: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for safe-buffer@5.1.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/safe-buffer: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/negotiator: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for negotiator@0.6.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/negotiator: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/once: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for once@1.4.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/once: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mysql: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for mysql@2.16.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mysql: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/on-finished: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for on-finished@2.3.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/on-finished: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/path-is-absolute: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for path-is-absolute@1.0.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/path-is-absolute: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/path-to-regexp: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for path-to-regexp@0.1.7 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/path-to-regexp: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/process-nextick-args: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for process-nextick-args@2.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/process-nextick-args: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/proxy-addr: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for proxy-addr@2.0.4 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/proxy-addr: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/qs: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for qs@6.5.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/qs: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/raw-body: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for raw-body@2.3.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/raw-body: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/depd: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for depd@1.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/depd: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for http-errors@1.6.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/range-parser: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for range-parser@1.2.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/range-parser: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/readable-stream: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for readable-stream@2.3.6 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/readable-stream: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/setprototypeof: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for setprototypeof@1.0.3 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/setprototypeof: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/safe-buffer: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for safe-buffer@5.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/safe-buffer: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for debug@2.6.9 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/debug: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/send: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for send@0.16.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/send: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mocha: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for mocha@5.2.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/mocha: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for http-errors@1.6.3 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/http-errors: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/serve-static: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for serve-static@1.13.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/serve-static: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for ms@2.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/ms: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/parseurl: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for parseurl@1.3.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/parseurl: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/setprototypeof: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for setprototypeof@1.1.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/setprototypeof: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/statuses: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for statuses@1.4.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/statuses: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/string_decoder: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for string_decoder@1.1.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/string_decoder: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/type-is: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for type-is@1.6.16 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/type-is: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/unpipe: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for unpipe@1.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/unpipe: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/util-deprecate: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for util-deprecate@1.0.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/util-deprecate: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/utils-merge: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for utils-merge@1.0.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/utils-merge: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/vary: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for vary@1.1.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/vary: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/wrappy: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for wrappy@1.0.2 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/wrappy: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/supports-color: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for supports-color@5.4.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/supports-color: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/sqlstring: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for sqlstring@2.3.1 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/sqlstring: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN old lockfile FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/toidentifier: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9)
+npm WARN old lockfile  Could not fetch metadata for toidentifier@1.0.0 FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/toidentifier: EACCES: permission denied, mkdir '/.npm'
+npm WARN old lockfile     at /usr/local/lib/node_modules/npm/node_modules/minipass-fetch/lib/body.js:162:15
+npm WARN old lockfile     at async Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:741:9) {
+npm WARN old lockfile   code: 'EACCES',
+npm WARN old lockfile   errno: 'EACCES',
+npm WARN old lockfile   syscall: 'mkdir',
+npm WARN old lockfile   path: '/.npm',
+npm WARN old lockfile   type: 'system'
+npm WARN old lockfile }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'hola-mundo-nodeJS@1.0.0',
+npm WARN EBADENGINE   required: { node: '^4.6.1' },
+npm WARN EBADENGINE   current: { node: 'v16.13.1', npm: '8.1.2' }
+npm WARN EBADENGINE }
+npm ERR! code EACCES
+npm ERR! syscall mkdir
+npm ERR! path /.npm
+npm ERR! errno -13
+npm ERR! 
+npm ERR! Your cache folder contains root-owned files, due to a bug in
+npm ERR! previous versions of npm which has since been addressed.
+npm ERR! 
+npm ERR! To permanently fix this problem, please run:
+npm ERR!   sudo chown -R 128:138 "/.npm"
+[Pipeline] }
+$ docker stop --time=1 b4788d9c88702ceb94de33b45681bb32b4897ea59c4c79ebd8e0074797704a9c
+$ docker rm -f b4788d9c88702ceb94de33b45681bb32b4897ea59c4c79ebd8e0074797704a9c
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 243
+Finished: FAILURE
