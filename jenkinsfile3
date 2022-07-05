@@ -20,9 +20,12 @@ pipeline {
                   sh 'npm test'
                }
            }
-           stage('Deliver') {
+           stage('Docker Build & Push') {
                steps {
-                   echo '3'
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        def nuestraapp = docker.build("frodriguezh/nodejsapp:${gitcommit}", ".")
+                        nuestraapp.push()
+                       }
                }
            }
        }
