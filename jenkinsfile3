@@ -1,8 +1,5 @@
+def gitcommit=''
 pipeline {
-    environment {
-
-        def gitcommit
-    }
     agent {
         docker {
             image 'node:4.6'
