@@ -1,4 +1,4 @@
-pipeline {
+node {
    def gitcommit
    stage('Verificacion SCM') {
      checkout scm
