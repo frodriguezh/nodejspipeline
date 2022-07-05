@@ -1,4 +1,5 @@
-def gitcommit 
+def gitcommit
+def nuestraapp
 pipeline {
       agent {
            docker {
@@ -24,7 +25,12 @@ pipeline {
            }
            stage('Docker Build & Push') {
                steps {
-                        echo gitcommit
+                  script {
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        nuestraapp = docker.build("frodriguezh/nodejsapp:${gitcommit}", ".")
+                        nuestraapp.push()
+                       }
+                  }
                }
            }
        }
