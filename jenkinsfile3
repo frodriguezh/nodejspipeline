@@ -1,9 +1,10 @@
 def gitcommit
 def nuestraapp
 pipeline {
-      agent any
+      agent none
       stages {
            stage('Build') {
+               agent any
                steps {
                    checkout scm
                    sh "git rev-parse --short HEAD > .git/commit-id"
@@ -12,10 +13,17 @@ pipeline {
                    }
                }
            }
-       }
-       post {
-            always {
-                  echo 'fin'
-            }
+           stage('Test') {
+               agent {
+                 docker {
+                     image 'node:4.6'
+                     args '-p 3000:3000 -p 5000:5000 -u root'
+                 }
+               }
+               steps {
+                  sh 'npm install --only=dev'
+                  sh 'npm test'
+               }
+           }
        }
 }
