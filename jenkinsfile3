@@ -1,3 +1,4 @@
+def gitcommit = 'hola'
 pipeline {
       agent {
            docker {
@@ -8,7 +9,7 @@ pipeline {
       stages {
            stage('Build') {
                steps {
-                   echo '1'
+                   echo gitcommit
                }
            }
            stage('Test') {
