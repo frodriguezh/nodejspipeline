@@ -1,4 +1,4 @@
-def gitcommit = 'hola'
+def gitcommit
 pipeline {
       agent {
            docker {
