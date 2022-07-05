@@ -1,7 +1,7 @@
 pipeline {
     environment {
 
-        def gitcommit = ""
+        def gitcommit
     }
     agent {
         docker {
