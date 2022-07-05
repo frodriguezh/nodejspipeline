@@ -12,12 +12,6 @@ pipeline {
                    }
                }
            }
-           stage('Test') {
-               steps {
-                  sh 'npm install --only=dev'
-                  sh 'npm test'
-               }
-           }
        }
        post {
             always {
