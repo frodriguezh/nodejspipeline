@@ -1,4 +1,4 @@
-def gitcommit=''
+
 pipeline {
     agent {
         docker {
@@ -6,11 +6,11 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
-    
     stages {
         stage('Build') {
+            def gitcommit
             steps {
-
+                
                 checkout scm
                 sh "git rev-parse --short HEAD > .git/commit-id"
                 gitcommit = readFile('.git/commit-id').trim()
