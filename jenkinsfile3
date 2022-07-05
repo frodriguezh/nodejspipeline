@@ -11,7 +11,7 @@ pipeline {
                steps {
                    checkout scm
                    sh "git rev-parse --short HEAD > .git/commit-id"
-                   echo readFile('.git/commit-id').trim()
+                   gitcommit = readFile('.git/commit-id').trim()
                }
            }
            stage('Test') {
