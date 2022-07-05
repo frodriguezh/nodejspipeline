@@ -1,5 +1,11 @@
 node {
    def gitcommit
+   agent {
+        docker {
+            image 'node:4.6'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
    stage('Verificacion SCM') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"
